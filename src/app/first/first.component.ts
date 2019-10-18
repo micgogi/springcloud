@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import Slider from 'bootstrap-slider';
+import { DemoData } from '../data';
+
+
+
+
+
+
+
 
 
 @Component({
@@ -15,14 +23,16 @@ export class FirstComponent implements OnInit {
   data:string;
   dataForm: FormGroup;
   check:boolean;
-  i:Map<String,Number>;
+  history:boolean;
+  
+  localData:DemoData= new DemoData();
+  dataList:string;
   constructor(private dataService:DataService,private fb : FormBuilder) {
    
    }
 
   ngOnInit() {
-   
-
+    //this.dataList= localStorage.getItem('a');
     var slider = new Slider("#ex6");
 slider.on("slide", function(sliderValue) {
   document.getElementById("ex6SliderVal").textContent = sliderValue;
@@ -41,26 +51,34 @@ slider.on("slide", function(sliderValue) {
   onSubmit(){
       console.log("Hakuna matata");
       console.log(this.dataForm.value);
-     
-  
+    
       this.numMonths=document.getElementsByClassName("junga")[0].textContent;
       this.amount = this.dataForm.get('amount').value;
-    
+     
       console.log(this.amount+" "+this.numMonths);
       
       this.dataService.getData(this.amount,this.numMonths).subscribe((data:any)=>{
         console.log(data);
         this.data=data;
+        // this.dataList=this.dataList+','+data;
+        // this.data=data;
         
+       
+          //this.data['monthlyPayment']['amount'].value;
         
-        localStorage.setItem(this.data['interestRate'],this.data['monthlyPayment']['amount']);
+       // localStorage.setItem(this.data['interestRate'],this.data['monthlyPayment']['amount']);
+       console.log(this.dataList)
        
         console.log(localStorage);
         
         
+        this.dataList=this.dataList+','+this.data['interestRate']+' '+ this.data['monthlyPayment']['amount'];
+        console.log(this.dataList)
+        localStorage.setItem('a',''+this.dataList);
+        console.log(this.data['interestRate'])
+       //this.dataList= localStorage.getItem('a');
+        this.history=true;
 
-
-console.log(this.i);
        
         this.check = true;
       })

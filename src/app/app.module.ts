@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
 import { DataService } from './data.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SecondComponent } from './second/second.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent
+    FirstComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,
