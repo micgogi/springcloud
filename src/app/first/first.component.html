@@ -1,18 +1,20 @@
  <div class="form-style-10">
-    <h1>Sign Up Now!<span>Sign up and tell us what you think of the site!</span></h1>
+    <h1>Enter your amount</h1>
     <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
-        <div class="section"><span>1</span>First Name & Address</div>
+        <div class="section"><span>1</span>Amount and Months</div>
         <div class="inner-wrap">
             <div class="form-group">
-            <label>Your Full Name <input id="amount" type="text" class = "amount" formControlName="amount" 
-                /></label>
+            <label>Amount(500-5000)<input id="amount" type="text" class = "amount" formControlName="amount" 
+                   /></label>
+               
             </div>
+            
             <div >
             <label>Address 
                 
 
-                <input id="ex6"  type="number" class = "numMonths" data-slider-min="6" data-slider-max="20" data-slider-step="1" data-slider-value="3"/>
-<span id="ex6CurrentSliderValLabel">Current Slider Value: <span class ="junga" id="ex6SliderVal">3</span></span>
+                <input id="ex6"  type="number" class = "numMonths" data-slider-min="6" data-slider-max="24" data-slider-step="1" data-slider-value="3"/>
+<span id="ex6CurrentSliderValLabel">Current Slider Value: <span class ="junga" id="ex6SliderVal">6</span></span>
             </label>
                 </div>
         </div>

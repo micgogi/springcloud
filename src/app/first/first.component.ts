@@ -40,7 +40,7 @@ slider.on("slide", function(sliderValue) {
 
 });
     this.dataForm=this.fb.group({
-      amount:new FormControl(''),
+      amount:new FormControl(),
      // numMonths:new FormControl('')
     })
     
@@ -65,7 +65,7 @@ slider.on("slide", function(sliderValue) {
         
        
           //this.data['monthlyPayment']['amount'].value;
-        
+          this.dataList= localStorage.getItem('a');
        // localStorage.setItem(this.data['interestRate'],this.data['monthlyPayment']['amount']);
        console.log(this.dataList)
        
@@ -76,12 +76,13 @@ slider.on("slide", function(sliderValue) {
         console.log(this.dataList)
         localStorage.setItem('a',''+this.dataList);
         console.log(this.data['interestRate'])
-       //this.dataList= localStorage.getItem('a');
+       
         this.history=true;
 
        
         this.check = true;
       })
+      
   }
   get f()
 {

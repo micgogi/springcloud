@@ -19,7 +19,7 @@ jsonData;
   
    console.log(this.dataArray);
    
-  console.log(this.myData.split(','));
+ 
   }
 
 }
