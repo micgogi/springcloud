@@ -2,6 +2,7 @@ package com.rahul.limitservice;
 
 import com.rahul.limitservice.bean.LimitConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
