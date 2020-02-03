@@ -1,5 +1,8 @@
 package com.rahul.currencyexchnageservice;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
@@ -7,14 +10,22 @@ import java.math.BigDecimal;
  * on 2/3/2020  9:33 PM
  * Micgogi
  */
+@Entity
 public class ExchangeValue {
+
+    @Id
     private Long id;
+    @Column(name="currency_from")
     private String from;
+    @Column(name = "currency_to")
     private String to;
     private BigDecimal conversionMultiple;
-    public ExchangeValue(){
+    private int port;
+
+    public ExchangeValue() {
 
     }
+
     public ExchangeValue(Long id, String from, String to, BigDecimal conversionMultiple) {
         this.id = id;
         this.from = from;
@@ -28,6 +39,14 @@ public class ExchangeValue {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public String getFrom() {
