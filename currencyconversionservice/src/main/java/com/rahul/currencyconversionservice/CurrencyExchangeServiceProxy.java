@@ -1,5 +1,6 @@
 package com.rahul.currencyconversionservice;
 
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  * on 2/4/2020  10:30 PM
  * Micgogi
  */
-@FeignClient(name="currency-exchange-service",url="localhost:8000")
+@FeignClient(name="currency-exchange-service")
+@RibbonClient(name="currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
     @GetMapping("/current-exchange/from/{from}/to/{to}")
     public CurrencyConversionBean retrieveExchnageValue(@PathVariable("from") String from, @PathVariable("to") String to);
