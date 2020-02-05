@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
  * on 2/4/2020  10:30 PM
  * Micgogi
  */
-@FeignClient(name="currency-exchange-service")
+//@FeignClient(name="currency-exchange-service")
+    @FeignClient("netflix-zuul-api-gateway-server")
 @RibbonClient(name="currency-exchange-service")
 @EnableDiscoveryClient
 public interface CurrencyExchangeServiceProxy {
-    @GetMapping("/current-exchange/from/{from}/to/{to}")
+   // @GetMapping("/current-exchange/from/{from}/to/{to}")
+    @GetMapping("currency-exchange-service/current-exchange/from/{from}/to/{to}")
     public CurrencyConversionBean retrieveExchnageValue(@PathVariable("from") String from, @PathVariable("to") String to);
 
 
