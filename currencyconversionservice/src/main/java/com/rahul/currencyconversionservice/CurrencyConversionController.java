@@ -1,5 +1,7 @@
 package com.rahul.currencyconversionservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import java.util.Map;
  */
 @RestController
 public class CurrencyConversionController {
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private CurrencyExchangeServiceProxy currencyExchangeServiceProxy;
 
@@ -38,6 +41,7 @@ public class CurrencyConversionController {
 
 
         CurrencyConversionBean currencyConversionBean=currencyExchangeServiceProxy.retrieveExchnageValue(from,to);
+        logger.info("{}",currencyConversionBean);
         return new CurrencyConversionBean(currencyConversionBean.getId(),from,to,
                 currencyConversionBean.getConversionMultiple(),quantity,quantity.multiply(currencyConversionBean.getConversionMultiple()),currencyConversionBean.getPort());
 
